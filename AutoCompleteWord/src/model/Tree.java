@@ -4,26 +4,30 @@ public class Tree {
 	
 	private Node root;
 	
-	public void init(){
-		this.root = new Node('K');
+	public Tree() {
+		init();
 	}
 	
-	public void add(Node father,char info,String word){
-		if(father.getListSons().size() == 0){
-			father.addSon(new Node(info));
-		}else{
-			for (int i = 0; i < father.getListSons().size(); i++) {
-				if(father.getListSons().get(i).getLetter()){
-					
-				}
-			}
-			Node son = new Node(info);
-			son.setFather(father);
-			father.addSon(son);
-		
-		}
-		
+	public void init(){
+		Node node = new Node('K');
+		node.setValueRecoment(0);
+		this.root = node;
 	}
+	
+	
+	public void addString(String string,Node actual){
+			if(string.length() > 0){
+				if(actual.isLetter(string.charAt(0))){
+				addString(string.substring(1), actual.refreshNode(string.charAt(0)));	
+				}else{
+					Node node = new Node(string.charAt(0));
+					node.setValueRecoment(0);
+					actual.addSon(node);
+					addString(string.substring(1),node);
+			}
+		}	
+	}
+	
 
 	public Node getRoot() {
 		return root;

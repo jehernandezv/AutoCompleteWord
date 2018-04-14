@@ -25,7 +25,7 @@ public class JPTreeShow extends JPanel{
 
 	public static DefaultMutableTreeNode searchBreadFirst(Node treeNario) {
 		if(treeNario != null){
-			DefaultMutableTreeNode father = new DefaultMutableTreeNode(treeNario.getLetter());
+			DefaultMutableTreeNode father = new DefaultMutableTreeNode(treeNario.getLetter() + " Recom: " + treeNario.getValueRecoment());
 			printSonJTree(treeNario, father);
 			return father;
 		}
@@ -35,7 +35,7 @@ public class JPTreeShow extends JPanel{
 	private static void printSonJTree(Node auxRoot, DefaultMutableTreeNode father) {
 		if(auxRoot != null && auxRoot.getListSons() != null){
 			for (Node  nodeAux : auxRoot.getListSons()) {
-				DefaultMutableTreeNode sonAux = new DefaultMutableTreeNode(nodeAux.getLetter());	
+				DefaultMutableTreeNode sonAux = new DefaultMutableTreeNode(nodeAux.getLetter() + " Recom: " + nodeAux.getValueRecoment());	
 				father.add(sonAux);
 				printSonJTree(nodeAux, sonAux);
 			}

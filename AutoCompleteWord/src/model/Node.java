@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Node {
 	private Node father;
-	private int valueRecoment;
+	private int valueRecoment = 0;
 	private char letter;
-	private ArrayList<Node> listSons;
+	private ArrayList<Node> listSons = new ArrayList<Node>();
 	
 	public Node(Node father, int value,char letter) {
 		this.father = father;
@@ -18,6 +18,31 @@ public class Node {
 	public Node(char letter) {
 		this.letter = letter;
 		this.listSons = new ArrayList<Node>();
+	}
+	
+	public boolean isLetter(char letter){
+		boolean flag = false;
+		for (int i = 0; i < this.listSons.size(); i++) {
+			if(this.listSons.get(i).getLetter() == letter){
+				flag = true;
+			}
+		}
+		return flag;
+	}
+	
+	public void sumRecoment(){
+		this.valueRecoment ++;
+	}
+	
+	public Node refreshNode(char letter){
+		Node result = null;
+		for (int i = 0; i < this.listSons.size(); i++) {
+			if(this.listSons.get(i).getLetter() == letter){
+				result = listSons.get(i);
+			}
+		}
+		return result;
+		
 	}
 	
 	public void addSon(Node son){
