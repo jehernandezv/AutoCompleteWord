@@ -18,10 +18,10 @@ public class Tree {
 	public void addString(String string,Node actual){
 			if(string.length() > 0){
 				if(actual.isLetter(string.charAt(0))){
-				addString(string.substring(1), actual.refreshNode(string.charAt(0)));	
+					actual.sumRecoment();
+					addString(string.substring(1), actual.refreshNode(string.charAt(0)));	
 				}else{
 					Node node = new Node(string.charAt(0));
-					node.setValueRecoment(0);
 					actual.addSon(node);
 					addString(string.substring(1),node);
 			}
